@@ -1,0 +1,27 @@
+include ./includes/head.jade
+include ./includes/side.jade
+ 
+//-------------------------------------
+// Main Body     
+//-------------------------------------	 
+
+|<?php
+|	$content = new Content; 
+|?> 
+
+main.container#container   
+	#container-load   
+		ul.filters
+			li.filters__item
+				.btn.new-page <i class="fa fa-plus"></i> Save Menu 
+		ol#sortable-menu.sortable-menu
+			li#a menu item 1
+			li#b menu item 2
+			li#c menu item 3
+			li#d menu item 4
+			li#e menu item 5
+
+		textarea.menu-json(type="text")
+
+								
+include ./includes/foot.jade				

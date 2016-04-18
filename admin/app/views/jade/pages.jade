@@ -1,0 +1,36 @@
+include ./includes/head.jade
+include ./includes/side.jade
+ 
+//-------------------------------------
+// Main Body     
+//-------------------------------------	 
+
+|<?php
+|	$content = new Content; 
+|?>
+
+main.container#container   
+	#container-load   
+		h1 Current Pages
+		.btn.new-page <i class="fa fa-plus"></i> New Page 		
+
+		table.table-list 
+			thead
+				tr.table-list__row__head
+					td.table-list__cell Title
+					td.table-list__cell Template
+					td.table-list__cell Last Modified
+					td.table-list__cell Actions
+			tbody 
+				|<?php foreach($content->getAllContent('pages') as $page): ?>
+				tr.table-list__row
+					td.table-list__cell <?=$page['filename']?>
+					td.table-list__cell default
+					td.table-list__cell <?=$page['last_modified']?>
+					td.table-list__cell 
+						<a class="table-list__btn no-ajax" target="_blank" href="/<?=$page['filename']?>/">View</a>
+						<a class="table-list__btn table-list__btn--green" href="edit-content?id=<?=$page['filename']?>&type=pages">Edit</a>
+						<a class="table-list__btn table-list__btn--red" href="delete-content?id=<?=$page['filename']?>&type=pages">Delete</a>
+				|<?php endforeach; ?>
+								
+include ./includes/foot.jade				

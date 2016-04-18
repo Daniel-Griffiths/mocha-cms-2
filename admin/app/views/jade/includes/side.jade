@@ -1,0 +1,37 @@
+//-------------------------------------
+// Main Navigation/Sidebar  
+//-------------------------------------
+
+//silly hacky way to get theme colours
+|<?= '<style>.sidebar, .table-list__row__head:first-child{background:' . $_SESSION['preferences']['theme_color'] . ';}</style>' ?>
+
+aside.sidebar
+	.profile
+		|<img class="profile__image" src="<?=users::getProfileImage($_SESSION['username'])?>">
+		|Hi <?=$_SESSION['preferences']['display_name']?>
+	nav
+		ul.sidebar__navigation
+			li
+				a.sidebar__link(href="/") 
+					|<i class="fa fa-globe"></i> <span>View Site</span>
+			li
+				a.sidebar__link(href="pages")
+					|<i class="fa fa-file-text-o"></i> <span>Pages</span>
+			li
+				a.sidebar__link(href="posts")
+					|<i class="fa fa-thumb-tack"></i> <span>Posts</span>
+			li
+				a.sidebar__link(href="menu")
+					|<i class="fa fa-bars"></i> <span>Menu</span>
+			li
+				a.sidebar__link(href="users")
+					|<i class="fa fa-users"></i> <span>Users</span>
+			li
+				a.sidebar__link(href="plugins")
+					|<i class="fa fa-plug"></i> <span>Plugins</span>
+			li
+				a.sidebar__link(href="settings") 
+					|<i class="fa fa-cog"></i> <span>Settings</span>
+			li
+				a.sidebar__link(href="logout") 
+					|<i class="fa fa-sign-out"></i> <span>Log Out</span>

@@ -1,0 +1,29 @@
+|<?php 
+|   $error = false;
+| 
+|	if(isset($_POST['username'],$_POST['password'])){
+|		$authentication = new authentication(); 
+|		$error = $authentication->userLogin($_POST['username'],$_POST['password']);
+|	}
+|?> 
+
+doctype html
+html(lang="en")
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width')
+		title Mocha CMS
+		link(href='assets/css/main.css', rel='stylesheet')
+		link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel='stylesheet')
+	body 
+
+	.login-box
+		form.login-box__inner(method="post")
+			input.login-box__field(type="text",name="username",placeholder="Username",required="true")
+			input.login-box__field(type="password",name="password",placeholder="Password",required="true")
+			button.login-box__btn
+				| <i class="fa fa-lock"></i> Login
+		| <?php if($error != false): ?>
+		p.login-box__error 	
+			| <i class="fa fa-exclamation-circle"></i> <?=$error?>
+		| <?php endif; ?>

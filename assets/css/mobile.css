@@ -1,0 +1,52 @@
+@media screen and (max-width: 500px){
+	
+	/* navigation */
+	.header nav ul{
+		position: fixed;
+		top: 0;
+		left: 0;
+		background: #272626;
+		padding:0 !important;
+		width:70% !important;
+		height:100%;
+		transform: translateX(-100%);
+		-webkit-transform: translateX(-100%);
+	}
+
+	.header nav ul:first-child{
+		overflow-y: auto;
+	}
+	
+	.header nav li{
+		width:100%;
+		border:0;
+	}
+	
+	.header nav{
+		height: 45px;
+		cursor:pointer;
+	}
+	
+	.header nav .grid:after{
+		content: "☰";
+		display: block;
+		color: #fff;
+		height: 45px;
+		line-height: 45px;
+		text-align: right;
+		font-size: 24px;
+	}
+	
+	/* sub nav */
+	.header nav ul ul{
+		width:100% !important;
+		opacity:1;
+		position:relative;
+		top:0;
+	}
+	
+	.header nav ul ul a{
+		background: rgba(0,0,0,0.3);
+		padding-left:40px;
+	}
+}

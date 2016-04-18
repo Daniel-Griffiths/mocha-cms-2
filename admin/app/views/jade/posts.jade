@@ -1,0 +1,36 @@
+include ./includes/head.jade
+include ./includes/side.jade
+ 
+//-------------------------------------
+// Main Body     
+//-------------------------------------	 
+
+|<?php
+|	$content = new Content; 
+|?>
+
+main.container#container   
+	#container-load   
+		h1 Current Posts
+		.btn.new-post <i class="fa fa-plus"></i> New Post  
+
+		table.table-list 
+			thead
+				tr.table-list__row__head
+					td.table-list__cell Title
+					td.table-list__cell Template
+					td.table-list__cell Last Modified
+					td.table-list__cell Actions
+			tbody 
+				|<?php foreach($content->getAllContent('posts') as $post): ?>
+				tr.table-list__row
+					td.table-list__cell <?=$post['filename']?>
+					td.table-list__cell default
+					td.table-list__cell <?=$post['last_modified']?>
+					td.table-list__cell 
+						<a class="table-list__btn no-ajax" target="_blank" href="/<?=$post['filename']?>/">View</a>
+						<a class="table-list__btn table-list__btn--green" href="edit-content?id=<?=$post['filename']?>&type=posts">Edit</a>
+						<a class="table-list__btn table-list__btn--red" href="delete-content?id=<?=$post['filename']?>&type=posts">Delete</a>
+				|<?php endforeach; ?>
+								
+include ./includes/foot.jade				

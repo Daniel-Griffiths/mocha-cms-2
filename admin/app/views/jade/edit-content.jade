@@ -1,0 +1,24 @@
+include ./includes/head.jade
+include ./includes/side.jade
+ 
+//-------------------------------------
+// Main Body     
+//-------------------------------------	 
+
+|<?php
+|	$content = new Content; 
+|?>
+
+main.container#container   
+	#container-load   
+		form.save-content-form(method="post",action="save-content")
+			h1 Edit Content
+			
+			<input type="text" name="title" value="<?=$_GET['id']?>" placeholder="Enter Title Here">
+			<input type="hidden" name="type" value="<?=$_GET['type']?>"> 
+			textarea#editor.editor(placegholder="Your content here", name="content", required)
+				| <?=$content->getContent('content/'.$_GET['type'].'/'.$_GET['id'].'.php')?>
+
+			button.btn.save-content Save Content 
+								
+include ./includes/foot.jade

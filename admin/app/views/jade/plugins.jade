@@ -1,0 +1,31 @@
+include ./includes/head.jade
+include ./includes/side.jade
+ 
+//-------------------------------------
+// Main Body     
+//-------------------------------------	 
+
+main.container#container   
+	#container-load   
+		h1 Plugins
+
+		table.table-list 
+			thead
+				tr.table-list__row__head 
+					td.table-list__cell Name
+					td.table-list__cell Description
+					td.table-list__cell Version
+					td.table-list__cell Author
+			tbody 
+				|<?php 
+				| foreach(plugins::getPlugins() as $plugin): 
+				| $plugin = plugins::pluginInfo($plugin);
+				|?>
+				tr.table-list__row
+					td.table-list__cell <?=$plugin[0]?>
+					td.table-list__cell <?=$plugin[1]?>
+					td.table-list__cell <?=$plugin[2]?>
+					td.table-list__cell <?=$plugin[3]?>
+				|<?php endforeach; ?>
+								
+include ./includes/foot.jade				
